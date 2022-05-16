@@ -1,28 +1,27 @@
-const bodyTree = () => {
+const treeBody = (sizeTree: number, counter: number, value: string) => {
+    if(sizeTree === 0) return value;
+    let result = value
+    let space = ''
+    let star = ''
     
+    space += '_'.repeat(sizeTree - 1)
+        
+    const starNumber = counter - (space.length * 2)
+
+    star += '*'.repeat(starNumber)
+        
+    result += space + star + space + '\n'
+    
+    return treeBody(sizeTree - 1, counter, result)
 }
 
 export function createXmasTree(height: number) {
+    const counter = (height * 2) - 1;
     let result = ''
-    let counter = null;
-    
-    for (let i = height; i >= 1; i--) {
-        let space = ''
-        let star = ''
-        
-        space += '_'.repeat(i - 1)
-        
-        if(counter === null) {
-            counter = (space.length * 2) + 1
-        }
-        
-        const starValue = counter - (space.length * 2)
-
-        star += '*'.repeat(starValue)
-        
-        result += space + star + space + '\n'
-    }
     let space = '';
+    
+    result = treeBody(height, counter, '')
+
     space += '_'.repeat((counter - 1) / 2)
     result += `${space}#${space}\n`.repeat(2)
   return result
