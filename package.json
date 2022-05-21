@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll",
-    "dev": "ts-node ./exercises/list_gifts"
+    "test": "jest --watchAll"
   },
   "type": "module",
   "keywords": [],
